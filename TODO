@@ -1,0 +1,47 @@
+==============================================================================
+Criar template básico de um sistema privado usando ADMIN LTE, Code Igniter e Angular JS.
+	- controle de permissões por controller/método
+==============================================================================
+
+TODO
++ Trocar nome de classes e métodos para ingles
++ Subir código para o GITHUB
++ Organizar banco de dados
+	- dividir tabela de controller e methods
+		#controller
+			- id
+			- name
+			- alias
+			- adminlte_image
+		#methods
+			- id
+			- name
+			- alias
+			- showOnSidebar
+		#controller_has_methods
+			- id_controller
+			- id_method
+	- colocar prefixo nas tabelas do sistema. 
+	- fazer script em php puro para geração do banco de dados inicial padrão.
++ criar controlador Admin e ocultar controladores Permissao e Usuario.
++ organizar códigos de geração de HTML do AdminLTE.
+	- organizar a classe.
+	- passagem obrigatória do base_path() ou acessar configs da library.
++ Organizar Login
+	- adicionar criptografia MD5 na senha
+	- fazer verificação de maísculas e minusculas.
+	- criar métodos e organizar código
++ Carregar permissão do usuário no Controller da página inicial.
+	- evitar a necessidade de logout na troca de permissões e links na sidebar.
++ Ver a necessidade do Header do conteúdo e possibilidades de preenchimento.
+
+
+PROBLEMAS PARA RESOLVER
++ Importação de muitos javascripts no HEADER
+	- necessidade de importar apenas quando for usar no conteúdo enviado, como os datatables.
+
+
+FUTURAS IMPLEMENTAÇÕES
++ Adicionar grupos de permissões como default além das permissões específicas.
++ Criação de módulo de atividades.
++ Criação de módulo de notícias. (necessita da hierarquia da empresa)
