@@ -39,14 +39,12 @@ class Login extends CI_Controller
             if( $usuarioValidado ) {
 
                 $arrayPermissoes     = $this->_carregarPermissoes( $usuarioNick );
-                $arraySidebarLinks   = $this->_carregarSidebarLinks( $arrayPermissoes );                 
                  
                 // TODO -> carregar dados de PESSOA e id usuario também
                 $dadosParaSessaoUsuario = array(
                     'nick' => $usuarioNick, 
                     'estaLogado' => true,
-                    'permissoes' => $arrayPermissoes,
-                    'sidebarLinks' => $arraySidebarLinks
+                    'permissoes' => $arrayPermissoes//,
                 );
                    
                 $this->session->set_userdata( $dadosParaSessaoUsuario );
@@ -86,27 +84,6 @@ class Login extends CI_Controller
         return $this->permissao_model->pegarPermissaoPorUsuarioNick( $usuarioNick );        
 
     }
-    
-    private function _carregarSidebarLinks( $tabelaPermissoes ){
-        
-        $arraySidebarLinks = array();        
-        foreach ($tabelaPermissoes as $row) {
-            if( !$row['oculto'] ) {
-                $linkArray = explode('/', $row['url']);
-                $controllerName = $linkArray[0];
-                $methodName = $linkArray[1]; 
-
-                if ( !isset($arraySidebarLinks[$controllerName]) ){
-                    $arraySidebarLinks[$controllerName] = array();
-                }
-
-                array_push($arraySidebarLinks[$controllerName], $methodName);
-            }
-        }      
-
-        return $arraySidebarLinks; 
-
-    }    
 
 }
 

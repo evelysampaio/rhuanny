@@ -215,24 +215,8 @@
             <li class="header">MÓDULOS</li>
             <?php  
 
-              foreach ($_SESSION['sidebarLinks'] as $controller => $methodArray) {
-                $treeViewString =   '<li class="treeview">'.
-                                    '  <a href="#">'.
-                                    '    <i class="fa fa-link"></i>'.
-                                    '    <span>' . $controller . '</span>'.
-                                    '    <i class="fa fa-angle-left pull-right"></i>'.
-                                    '  </a>'.
-                                    '  <ul class="treeview-menu">';
-
-                foreach ($methodArray as $method ) {
-                  $treeViewString .=  '<li><a href="'. base_url() . $controller.'/'.$method.'">'.$method.'</a></li>';
-                }
-                
-                $treeViewString .= '</ul></li>';
-
-                echo $treeViewString;
-
-              }
+              echo $this->adminlte->createSideBarLinks();
+//              exit();
              
             ?>
           </ul><!-- /.sidebar-menu -->
