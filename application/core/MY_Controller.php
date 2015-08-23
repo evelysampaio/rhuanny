@@ -13,7 +13,6 @@ class MY_Controller extends CI_Controller
 		if( !isset($_SESSION['estaLogado']) ){
 			show_error('Você precisa estar logado para acessar essa página.');			
 		} 
-
 		//verificar permissão
 		if( !$this->_usuarioTemPermissao() ){
 			show_error('Você não possui privilégios para acessar essa página');			

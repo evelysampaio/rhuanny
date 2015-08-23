@@ -37,14 +37,11 @@ class Login extends CI_Controller
             $usuarioValidado    = $this->_validarUsuario($usuarioNick, $usuarioSenha );        
             
             if( $usuarioValidado ) {
-
-                $arrayPermissoes     = $this->_carregarPermissoes( $usuarioNick );
-                 
+                
                 // TODO -> carregar dados de PESSOA e id usuario também
                 $dadosParaSessaoUsuario = array(
                     'nick' => $usuarioNick, 
                     'estaLogado' => true,
-                    'permissoes' => $arrayPermissoes//,
                 );
                    
                 $this->session->set_userdata( $dadosParaSessaoUsuario );

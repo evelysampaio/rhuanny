@@ -4,6 +4,8 @@ Criar template básico de um sistema privado usando ADMIN LTE, Code Igniter e An
 ==============================================================================
 
 TODO
++ Carregar usuárioID na sessão. 
++ Separar todos os dados do usuário em um Array na sessão.
 + Trocar nome de classes e métodos para ingles
 + Subir código para o GITHUB
 + Organizar banco de dados
