@@ -168,7 +168,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="<?php echo base_url("login/logout");?>" class="btn btn-default btn-flat">Logout</a>
                     </div>
                   </li>
                 </ul>
