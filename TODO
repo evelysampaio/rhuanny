@@ -7,23 +7,7 @@ TODO
 + Carregar usuárioID na sessão. 
 + Separar todos os dados do usuário em um Array na sessão.
 + Trocar nome de classes e métodos para ingles
-+ Subir código para o GITHUB
 + Organizar banco de dados
-	- dividir tabela de controller e methods
-		#controller
-			- id
-			- name
-			- alias
-			- adminlte_image
-		#methods
-			- id
-			- name
-			- alias
-			- showOnSidebar
-		#controller_has_methods
-			- id_controller
-			- id_method
-	- colocar prefixo nas tabelas do sistema. 
 	- fazer script em php puro para geração do banco de dados inicial padrão.
 + criar controlador Admin e ocultar controladores Permissao e Usuario.
 + organizar códigos de geração de HTML do AdminLTE.
@@ -47,3 +31,25 @@ FUTURAS IMPLEMENTAÇÕES
 + Adicionar grupos de permissões como default além das permissões específicas.
 + Criação de módulo de atividades.
 + Criação de módulo de notícias. (necessita da hierarquia da empresa)
+
+
+==========
+CONSULTAS
+==========
+
+CREATE VIEW `permissaoPorUsuario` AS 
+
+select 
+	sys_permissao.id as id,
+    sys_controller.name as controllerName,
+    sys_controller.alias as controllerAlias,
+    sys_controller.adminlteimage as sidebarImage,
+    sys_method.name as methodName,
+    sys_method.alias as methodAlias,
+    sys_method.mostrarNaSideBar as mostrarNaSideBar
+from sys_permissao 
+join sys_method on sys_permissao.sys_method_id = sys_method.id
+join sys_usuario on sys_permissao.sys_usuario_id = sys_usuario.id
+join sys_controller on sys_method.sys_controller_id = sys_controller.id
+
+
