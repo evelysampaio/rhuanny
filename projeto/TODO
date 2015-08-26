@@ -21,7 +21,11 @@ TODO
 + Carregar permissão do usuário no Controller da página inicial.
 	- evitar a necessidade de logout na troca de permissões e links na sidebar.
 + Ver a necessidade do Header do conteúdo e possibilidades de preenchimento.
-
++ Validação de formulários
+	- Retirar validação do PHP.
+	- Fazer validação por JavaScript..
+	- Criar lançamento de erros no PHP caso dados não estejam ok.
++ Definir tipos de consultas em PESSOA
 
 PROBLEMAS PARA RESOLVER
 + Importação de muitos javascripts no HEADER
