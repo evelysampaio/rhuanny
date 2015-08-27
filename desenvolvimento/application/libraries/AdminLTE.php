@@ -73,7 +73,7 @@ class AdminLTE
 
 	public function createSideBarLinks(){
 
-		$sidebarArray = $this->_getSidebarLinks( $_SESSION['permissoes'] );
+		$sidebarArray = $this->_getSidebarLinks( $_SESSION['usuario']['permissoes'] );
 		$treeViewString = "";
 
 		foreach ( $sidebarArray as $controller => $methodArray ) {

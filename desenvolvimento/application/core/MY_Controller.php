@@ -29,7 +29,7 @@ class MY_Controller extends CI_Controller
 		if($url == 'paginainicial/index') { //sempre tem permissao para pagina inicial do sistema
 			return true;
 		} else {
-			foreach ( (array)$_SESSION['permissoes'] as $row) {			
+			foreach ( (array)$_SESSION['usuario']['permissoes'] as $row) {			
 				if ( $url == $row['url'] ) 
 					return true;
 			}

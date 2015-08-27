@@ -30,7 +30,7 @@ class PaginaInicial extends MY_Controller
 	private function _carregarPermissoesUsuario(){
         
         $this->load->model('permissao_model');
-        $_SESSION['permissoes'] = $this->permissao_model->pegarPermissaoPorUsuarioNick( $_SESSION['usuario']['nick'] );        
+        $_SESSION['usuario']['permissoes'] = $this->permissao_model->pegarPermissaoPorUsuarioNick( $_SESSION['usuario']['nick'] );        
 
     }
 }
