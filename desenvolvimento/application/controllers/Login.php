@@ -29,10 +29,9 @@ class Login extends CI_Controller
 
         if ($this->form_validation->run() === FALSE){ 
 
-            // se o formulário não foi validado
             $this->_mostrarTelaLogin($dadosTelaLogin);
 
-        } else { // se passou pelas validações de codigo
+        } else { 
             
             $usuarioNick        = $this->input->post('usuarioNick');
             $usuarioSenha       = $this->input->post('usuarioSenha');
@@ -40,12 +39,13 @@ class Login extends CI_Controller
             
             if( $usuario['senha'] == $usuarioSenha ){
                 
-                $usuario['estaLogado'] = true;                   
+                $usuario['estaLogado'] = true; 
+                unset($usuario['senha']);
                 $this->session->set_userdata( array('usuario' => $usuario) );
                 redirect( 'paginainicial' );
                 
             } else {                
-                $dadosTelaLogin["erro"] = "usuario ou senha incorretos";                               
+                $dadosTelaLogin["erro"] = "usuario ou senha incorretos.";                               
                 $this->_mostrarTelaLogin( $dadosTelaLogin );
             }
         }
