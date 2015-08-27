@@ -8,12 +8,14 @@ class Login extends CI_Controller
 	
 	function __construct()
 	{
-		parent::__construct();      		
+		parent::__construct();  
+        $this->load->model('user_model');
+    		
 	}
 
 	public function index(){
 
-		if( isset($_SESSION['estaLogado']) ){
+		if( isset($_SESSION['usuario']['estaLogado']) ){
            redirect('paginainicial');          
         }
 
@@ -34,17 +36,12 @@ class Login extends CI_Controller
             
             $usuarioNick        = $this->input->post('usuarioNick');
             $usuarioSenha       = $this->input->post('usuarioSenha');
-            $usuarioValidado    = $this->_validarUsuario($usuarioNick, $usuarioSenha );        
+            $usuario            = $this->user_model->pegarUsuarioPorNick( $usuarioNick );        
             
-            if( $usuarioValidado ) {
+            if( $usuario['senha'] == $usuarioSenha ){
                 
-                // TODO -> carregar dados de PESSOA e id usuario também
-                $dadosParaSessaoUsuario = array(
-                    'nick' => $usuarioNick, 
-                    'estaLogado' => true,
-                );
-                   
-                $this->session->set_userdata( $dadosParaSessaoUsuario );
+                $usuario['estaLogado'] = true;                   
+                $this->session->set_userdata( array('usuario' => $usuario) );
                 redirect( 'paginainicial' );
                 
             } else {                
@@ -61,18 +58,7 @@ class Login extends CI_Controller
 
     private function _mostrarTelaLogin( $dadosTelaLogin ){      
         
-        
         $this->load->view("login/index", $dadosTelaLogin);
-    }
-
-    private function _validarUsuario( $usuarioNick, $usuarioSenha ){
-
-        $this->load->model('user_model');
-        $usuario = $this->user_model->pegarUsuarioPorNick($usuarioNick);
-        if( $usuario['senha'] == $usuarioSenha )
-            return true;
-        return false;
-
     }
 
     private function _carregarPermissoes( $usuarioNick ){

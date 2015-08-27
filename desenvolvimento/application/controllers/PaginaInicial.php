@@ -16,9 +16,8 @@ class PaginaInicial extends MY_Controller
 
 
 		$dadosPaginaInicial = array(
-										'titulo' => 'Página inicial',
-										'mensagem' => 'Bem vindo, ' . $_SESSION['nick'] . '!!!',
-										'usuarioPermissoes' => $_SESSION['permissoes'],
+										'titulo' => 'Página inicial'
+										
 									 );
 
 		//pegar lista de permissões e repassar para view
@@ -31,7 +30,7 @@ class PaginaInicial extends MY_Controller
 	private function _loadUserPermissions(){
         
         $this->load->model('permissao_model');
-        $_SESSION['permissoes'] = $this->permissao_model->pegarPermissaoPorUsuarioNick( $_SESSION['nick'] );        
+        $_SESSION['permissoes'] = $this->permissao_model->pegarPermissaoPorUsuarioNick( $_SESSION['usuario']['nick'] );        
 
     }
 }

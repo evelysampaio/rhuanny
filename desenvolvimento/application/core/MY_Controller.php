@@ -10,7 +10,7 @@ class MY_Controller extends CI_Controller
 		parent::__construct();
 		
 		//verifica login
-		if( !isset($_SESSION['estaLogado']) ){
+		if( !isset($_SESSION['usuario']['estaLogado']) ){
 			show_error('Você precisa estar logado para acessar essa página.');			
 		} 
 		//verificar permissão
