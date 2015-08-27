@@ -9,13 +9,17 @@ class MY_Controller extends CI_Controller
 	{
 		parent::__construct();
 		
+		$controllerName = $this->router->fetch_class(); // class = controller
+		$methodName 	= $this->router->fetch_method();
+		$url 			= $controllerName . '/' . $methodName;
+
 		//verifica login
 		if( !isset($_SESSION['usuario']['estaLogado']) ){
-			show_error('Você precisa estar logado para acessar essa página.');			
+			show_error('Você precisa estar logado para acessar essa página. <br /> url:' . $url);			
 		} 
 		//verificar permissão
 		if( !$this->_usuarioTemPermissao() ){
-			show_error('Você não possui privilégios para acessar essa página');			
+			show_error('Você não possui privilégios para acessar essa página <br /> url:' . $url);			
 		} 
 
 	}

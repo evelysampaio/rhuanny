@@ -61,13 +61,6 @@ class Login extends CI_Controller
         $this->load->view("login/index", $dadosTelaLogin);
     }
 
-    private function _carregarPermissoes( $usuarioNick ){
-        
-        $this->load->model('permissao_model');
-        return $this->permissao_model->pegarPermissaoPorUsuarioNick( $usuarioNick );        
-
-    }
-
 }
 
 ?>

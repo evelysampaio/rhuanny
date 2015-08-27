@@ -14,7 +14,11 @@ class Admin extends MY_Controller
 	}
 
 	function index(){}
-	function usuarios(){}	
-	function permissoes(){}	
+	function usuarios(){
+		redirect(base_url('usuario'));
+	}	
+	function permissoes(){
+		redirect(base_url('permissao'));
+	}	
 }
 ?>
