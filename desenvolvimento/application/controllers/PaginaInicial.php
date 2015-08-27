@@ -9,7 +9,7 @@ class PaginaInicial extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();	
-		$this->_loadUserPermissions();
+		$this->_carregarPermissoesUsuario();
 	}
 
 	function index(){
@@ -27,7 +27,7 @@ class PaginaInicial extends MY_Controller
   
 	}	
 
-	private function _loadUserPermissions(){
+	private function _carregarPermissoesUsuario(){
         
         $this->load->model('permissao_model');
         $_SESSION['permissoes'] = $this->permissao_model->pegarPermissaoPorUsuarioNick( $_SESSION['usuario']['nick'] );        
