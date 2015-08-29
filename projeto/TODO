@@ -4,7 +4,6 @@ Criar template básico de um sistema privado usando ADMIN LTE, Code Igniter e An
 ==============================================================================
 
 TODO
-+ Trocar nome de classes e métodos para ingles
 + Organizar banco de dados
 	- fazer script em php puro para geração do banco de dados inicial padrão.
 + criar controlador Admin e ocultar controladores Permissao e Usuario.

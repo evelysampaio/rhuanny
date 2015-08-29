@@ -13,12 +13,12 @@ class User_model extends CI_Model
 
 	function pegarUsuarioPorNick($usuarioNick){
 
-		$query = $this->db->get_where('usuario', array('nick' => $usuarioNick));
+		$query = $this->db->get_where('sys_usuario', array('nick' => $usuarioNick));
         return $query->row_array();        
 	}
 
 	function pegarTodos(){
-		$query = $this->db->get('usuario');       
+		$query = $this->db->get('sys_usuario');       
         return $query->result_array();   
 
 	}

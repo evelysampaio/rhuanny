@@ -76,28 +76,30 @@ class AdminLTE
 		$sidebarArray = $this->_getSidebarLinks( $_SESSION['usuario']['permissoes'] );
 		$treeViewString = "";
 
-		foreach ( $sidebarArray as $controller => $methodArray ) {
+		foreach ( $sidebarArray as $controllerName => $controller ) {
+
+			$methodArray = $controller['arrayMethods'];
             
 			if ( count($methodArray) == 1 && $methodArray[0] == 'index' ) {
 
 				$treeViewString .= 	'<li class="active">'.
 									'	<a href="'. base_url() . $controller.'">'.
-									'		<i class="fa fa-link"></i> '.
-									'		<span>' . $controller . '</span>'.
+									'		<i class="fa '. $controller['sidebarImage'] .'"></i> '.
+									'		<span>' . $controllerName . '</span>'. //verificar o alias
 									'	</a>'.
 									'</li>';
 			} else {	
 
 	            $treeViewString .=  '<li class="treeview">'.
 	            					'  <a href="#">'.
-	                                '    <i class="fa fa-link"></i>'.
-	                                '    <span>' . $controller . '</span>'.
+	                                '    <i class="fa '. $controller['sidebarImage'] .'"></i> '.
+	                                '    <span>' . $controllerName . '</span>'. //verificar o alias
 	                                '    <i class="fa fa-angle-left pull-right"></i>'.
 	                                '  </a>'.
 	                                '  <ul class="treeview-menu">';
 
 	            foreach ($methodArray as $method ) {
-	              $treeViewString .=  '<li><a href="'. base_url() . $controller.'/'.$method.'">'.$method.'</a></li>';
+	              $treeViewString .=  '<li><a href="'. base_url() . $controllerName.'/'.$method['name'].'">'.$method['name'].'</a></li>';
 	            }
 
 	            $treeViewString .= '</ul></li>';
@@ -109,25 +111,44 @@ class AdminLTE
 	}
 
 	private function _getSidebarLinks( $tabelaPermissoes ){
-        
-        $arraySidebarLinks = array();        
-        foreach ($tabelaPermissoes as $row) {
-            if( !$row['oculto'] ) {
-                $linkArray = explode('/', $row['url']);
-                $controllerName = $linkArray[0];
-                $methodName = $linkArray[1]; 
 
-                if ( !isset($arraySidebarLinks[$controllerName]) ){
-                    $arraySidebarLinks[$controllerName] = array();
+        $arrayControllers = array();
+        
+        foreach ($tabelaPermissoes as $row) {
+
+	        $controllerName 	= $row['controllerName'];
+			$controllerAlias 	= $row['controllerAlias'];
+			$sidebarImage		= $row['sidebarImage'];
+			$methodName 		= $row['methodName'];
+			$methodAlias		= $row['methodAlias'];
+
+            if( $row['mostrarNaSideBar'] ) {
+      
+                if ( !isset( $arrayControllers[$controllerName] ) ){
+                    
+                	$arrayMethods = array();
+                	$arrayControllerAttributes = array 	(
+                											'sidebarImage' => $sidebarImage,
+                    										'alias' =>  $controllerAlias,
+                    										'arrayMethods' => $arrayMethods 
+                										);	
+
+                    $arrayControllers[$controllerName] = $arrayControllerAttributes;
                 }
 
-                array_push($arraySidebarLinks[$controllerName], $methodName);
+                $arrayMethodAttributes = array 	(
+                									'name' => $row['methodName'],
+                    								'alias' =>  $row['methodAlias']
+                								);
+
+                array_push( $arrayControllers[$controllerName]['arrayMethods'], $arrayMethodAttributes );
             }
         }      
 
-        return $arraySidebarLinks; 
+        return $arrayControllers; 
 
     }  
+
 }
 
 ?>

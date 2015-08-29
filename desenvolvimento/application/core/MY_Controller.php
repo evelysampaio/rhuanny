@@ -26,15 +26,16 @@ class MY_Controller extends CI_Controller
 
 	private function _usuarioTemPermissao(){
 	
-		$controllerName = $this->router->fetch_class(); // class = controller
+		$controllerName = $this->router->fetch_class(); 
 		$methodName 	= $this->router->fetch_method();
-		$url 			= $controllerName . '/' . $methodName;			
 
-		if($url == 'paginainicial/index') { //sempre tem permissao para pagina inicial do sistema
+		if( $controllerName == 'paginainicial' and $methodName == 'index' ){
 			return true;
-		} else {
-			foreach ( (array)$_SESSION['usuario']['permissoes'] as $row) {			
-				if ( $url == $row['url'] ) 
+		}
+		
+		else {
+			foreach ( (array)$_SESSION['usuario']['permissoes'] as $row ) {			
+				if ( $controllerName == $row['controllerName'] and $methodName == $row['methodName'] )
 					return true;
 			}
 		}	
