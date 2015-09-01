@@ -10,6 +10,30 @@ class AdminLTE
 	function __construct(){		
 	}	
 
+	public function alertError($error){
+
+		if( $error != "" ) 
+			echo '	<br/>
+					<div class="alert alert-danger alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-ban"></i> Erro! </h4>
+						'.$error.'
+					</div>';
+              
+	}
+
+	public function alertSuccess($success){
+
+		if( $success != "" ) 
+			echo '	<br/>
+					<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i>Sucesso!</h4>
+						'.$success.'
+					</div>';
+              
+	}
+
 	public function createNormalBox(){}
 
 	public function createFullTable(	$tituloTabela, 
@@ -131,7 +155,7 @@ class AdminLTE
                 											'sidebarImage' => $sidebarImage,
                     										'alias' =>  $controllerAlias,
                     										'arrayMethods' => $arrayMethods 
-                										);	
+                						 				);	
 
                     $arrayControllers[$controllerName] = $arrayControllerAttributes;
                 }

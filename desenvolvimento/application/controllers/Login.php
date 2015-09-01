@@ -37,7 +37,8 @@ class Login extends CI_Controller
             $usuarioSenha       = $this->input->post('usuarioSenha');
             $usuario            = $this->user_model->pegarUsuarioPorNick( $usuarioNick );        
             
-            if( $usuario['senha'] == $usuarioSenha ){
+          
+            if( $usuario['senha'] == md5($usuarioSenha) ){
                 
                 $usuario['estaLogado'] = true; 
                 unset($usuario['senha']);

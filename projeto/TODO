@@ -10,8 +10,8 @@ TODO
 + organizar códigos de geração de HTML do AdminLTE.
 	- organizar a classe.
 	- passagem obrigatória do base_path() ou acessar configs da library.
++ fazer CRUD de usuário.
 + Organizar Login
-	- adicionar criptografia MD5 na senha
 	- fazer verificação de maísculas e minusculas.
 	- criar métodos e organizar código
 + Carregar permissão do usuário no Controller da página inicial.
