@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Rhuanny | Dashboard</title>    
+    <title>Rhuanny | Página Inicial</title>    
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href=<?php echo adminLTE_url("bootstrap/css/bootstrap.min.css"); ?> rel="stylesheet" type="text/css" />
     <link href=<?php echo adminLTE_url("dist/css/AdminLTE.min.css"); ?> rel="stylesheet" type="text/css" />    

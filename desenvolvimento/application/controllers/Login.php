@@ -46,7 +46,7 @@ class Login extends CI_Controller
                 redirect( 'paginainicial' );
                 
             } else {                
-                $dadosTelaLogin["erro"] = "usuario ou senha incorretos.";                               
+                $dadosTelaLogin["erro"] = "Usuário ou senha incorretos.";                               
                 $this->_mostrarTelaLogin( $dadosTelaLogin );
             }
         }
