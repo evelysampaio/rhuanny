@@ -1,4 +1,6 @@
 <?php  
+if( isset($error) ) $this->adminlte->alertError($error); 
+if( isset($success) ) $this->adminlte->alertSuccess($success); 
 
 echo $this->adminlte->createFullTable (	
 					"Usuários do Sistema", 

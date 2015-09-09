@@ -69,12 +69,14 @@ class AdminLTE
 			}
 
 			if($podeEditar){
+
+				$stringOnConfirm = 'onClick="return confirm()"';
 				$stringHTML .= "<td>
 									<a href='". $controllerPath."/editar/".$row['id']. "'
 										<i class='fa fa-fw fa-pencil'>
 										</i>									
 									<a>
-									<a href='". $controllerPath."/excluir/".$row['id']."'
+									<a ". $stringOnConfirm." href='". $controllerPath."/excluir/".$row['id']."'
 										<i class='fa fa-fw fa-times'>
 										</i>									
 									</a>

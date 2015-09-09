@@ -15,11 +15,25 @@ class MY_Controller extends CI_Controller
 
 		//verifica login
 		if( !isset($_SESSION['usuario']['estaLogado']) ){
-			show_error('Você precisa estar logado para acessar essa página. <br /> url:' . $url);			
+			show_error	(	'Você precisa estar logado para acessar essa página. 
+							<br />
+							<br /> 
+							url:' . $url . '
+							<br />
+							<br />
+							<blockquote><h2><a href="'.base_url().'">voltar</a></h2></blockquote>'
+						);			
 		} 
 		//verificar permissão
 		if( !$this->_usuarioTemPermissao() ){
-			show_error('Você não possui privilégios para acessar essa página <br /> url:' . $url);			
+			show_error	(	'Você precisa estar logado para acessar essa página. 
+							<br />
+							<br /> 
+							url:' . $url . '
+							<br />
+							<br />
+							<blockquote><h2><a href="'.base_url().'">voltar</a></h2></blockquote>'
+						);			
 		} 
 
 	}
